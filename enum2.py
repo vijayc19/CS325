@@ -33,14 +33,17 @@ def scanInput():
 	
 
 def enum1(array):
-	print "Processing array: " + str(array) + "\nLength: " + str(len(array))
+	maxI = 0
+	maxJ = 0
+	maxSubarray = []
 	highestSum = 0	#Highest subarray sum yet found
 	length = len(array)
 
 	#Special case for length 1 arrays
 	if length == 1:
-		print "\nFinal highest sum: " + str(array[0])
-		return array[0]
+		#print "\nFinal highest sum: " + str(array[0])
+		outfile.write("Maximum subarray: " + str(array) + "\n")
+		outfile.write("Maximum sum: " + str(array[0]) + "\n\n")
 
 	#Outer loop increments left index
 	for left in range(0, length): 
@@ -55,20 +58,25 @@ def enum1(array):
 			#Check if new summation is correct 
 			if newSum > highestSum:
 				highestSum = newSum
-				print "		Found new highest sum: " + str(newSum)
+				maxI = left
+				maxJ = right
+	
+	#Print maximum subarray to outfile
+	for y in range(maxI, maxJ):
+		maxSubarray.append(array[y])
 
-	print "\nFinal highest sum: " + str(highestSum)
-	return highestSum
-
-
+	outfile.write("Maximum subarray: " + str(maxSubarray) + "\n")
+	outfile.write("Maximum sum: " + str(highestSum) + "\n\n")		
+	
 
 #MAIN PROGRAM
+outfile = open('MSS_Results.txt', 'w')	#Creates/opens file for output (overwrites existing file of same name)
 arrays = scanInput()
-print "Arrays detected in file: " + str(len(arrays))
+
+outfile.write("Arrays detected in file: " + str(len(arrays)) + "\n\n")
 
 #Run the enum1 file on each array and output the results to 'MSS_Results.txt'
-outfile = open('MSS_Results.txt', 'w')	#Creates/opens file for output (overwrites existing file of same name)
-
 for x in range(len(arrays)):
 	outfile.write("Array being processed: " + str(arrays[x]) + "\n")
-	outfile.write("Final highest sum: " + str(enum1(arrays[x])) + "\n\n")
+	enum1(arrays[x])
+	
