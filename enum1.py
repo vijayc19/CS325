@@ -33,7 +33,7 @@ def scanInput():
 	
 
 def enum1(array):
-	print "Processing array: " + str(array)
+	print "Processing array: " + str(array) + "\nLength: " + str(len(array))
 	highestSum = 0	#Highest subarray sum yet found
 	length = len(array)
 
@@ -45,17 +45,23 @@ def enum1(array):
 	#Outer loop increments left index
 	for left in range(0, length): 
 		newSum = array[left]
-		print "\nNew left bound is: " + str(newSum)
+		#print "\nNew left bound is: " + str(newSum)
 
 		#Inner loop increments right index 
 		for right in range(left+1, length):
-			print "Adding " + str(array[right]) + " to newSum total of " + str(newSum)
-			newSum += array[right]
+			#print "Adding arrays " + str(left) + " through " + str(right)
+			newSum = 0
 			
-			#Check if new summation is correct 
-			if newSum > highestSum:
-				highestSum = newSum
-				print "		Found new highest sum: " + str(newSum)
+			marker = left
+			while marker <= right:
+				newSum += array[marker]
+				marker += 1
+				#print "Adding " + str(array[marker]) + " = " + str(newSum)
+
+				#Check if new summation is correct 
+				if newSum > highestSum:
+					highestSum = newSum
+					print "		Found new highest sum: " + str(newSum)
 
 	print "\nFinal highest sum: " + str(highestSum)
 	return highestSum
