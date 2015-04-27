@@ -1,0 +1,1 @@
+When calling Linear-time with Python, use, as a parameter, a number <= 0 to use the arrays from MSS_Problems.txt. Use numbers > 0 to create 10 random arrays of the same size as the number entered.
