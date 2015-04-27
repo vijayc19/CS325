@@ -44,8 +44,8 @@ def enum1(array):
 	if length == 1:
 		#print "\nFinal highest sum: " + str(array[0])
 		outfile.write("Maximum subarray: " + str(array) + "\n")
-		outfile.write("Maximum sum: " + str(array[0]) + "\n\n")	
-		return
+		outfile.write("Maximum sum: " + str(array[0]) + "\n\n")
+		return		
 
 	#Outer loop increments left index
 	for left in range(0, length): 
