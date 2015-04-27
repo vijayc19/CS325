@@ -1,5 +1,5 @@
 #Alex C. Way
-#4/25/15
+#4/26/15
 #Linear-time
 #CS 325
 
@@ -67,6 +67,7 @@ def linearTime(array):
 outfile = open('MSS_Results.txt', 'w')	#Creates/opens file for output (overwrites existing file of same name)
 
 if int(sys.argv[1]) > 0:
+	totalTime = 0
 	for x in range(10):
 		theRandArray = randArray()
 		highestSum = str(linearTime(theRandArray))
@@ -75,9 +76,13 @@ if int(sys.argv[1]) > 0:
 		print("\nFinal highest sum: " + highestSum)
 		if __name__ == '__main__':
 			import timeit
+			timeVal = timeit.timeit("linearTime(theRandArray)", setup="from __main__ import linearTime, theRandArray, x", number=1)
+			totalTime += timeVal
 			print("The timing was: ")
-			print(timeit.timeit("linearTime(theRandArray)", setup="from __main__ import linearTime, theRandArray, x", number=1))
+			print(timeVal)
 			print(" seconds.")
+	print "average time is: "
+	print totalTime/10
 else:
 	arrays = scanInput()
 	print "Arrays detected in file: " + str(len(arrays))
