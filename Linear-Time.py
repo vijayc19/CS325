@@ -4,6 +4,19 @@
 #CS 325
 
 import sys
+from random import randint
+
+def randArray():
+	array = []
+	n = int(sys.argv[1])
+	#outfile = open('randArray.txt', 'w')	#Outfile used to store array
+
+	#Append 'n' random integers between -99 and 99 to array
+	for x in range(n):
+		array.append(randint(-99,99))
+
+	#outfile.write(str(array))
+	return array
 
 #Scans 'MSS_Problems.txt' and returns an array of arrays contained in the file
 def scanInput():
@@ -43,17 +56,38 @@ def linearTime(array):
 			maxSuffix = 0
 		if maxCurrent < maxSuffix:
 			maxCurrent = maxSuffix
-	print "\nFinal highest sum: " + str(maxCurrent)
+	#print "\nFinal highest sum: " + str(maxCurrent)
 	return maxCurrent
 
 
 #MAIN PROGRAM
-arrays = scanInput()
-print "Arrays detected in file: " + str(len(arrays))
+
 
 #Run the linearTime function on each array and output the results to 'MSS_Results.txt'
 outfile = open('MSS_Results.txt', 'w')	#Creates/opens file for output (overwrites existing file of same name)
 
-for x in range(len(arrays)):
-	outfile.write("Array being processed: " + str(arrays[x]) + "\n")
-	outfile.write("Final highest sum: " + str(linearTime(arrays[x])) + "\n\n")
+if int(sys.argv[1]) > 0:
+	for x in range(10):
+		theRandArray = randArray()
+		highestSum = str(linearTime(theRandArray))
+		outfile.write("Array being processed: " + str(theRandArray) + "\n")
+		outfile.write("Final highest sum: " + highestSum + "\n\n")
+		print("\nFinal highest sum: " + highestSum)
+		if __name__ == '__main__':
+			import timeit
+			print("The timing was: ")
+			print(timeit.timeit("linearTime(theRandArray)", setup="from __main__ import linearTime, theRandArray, x", number=1))
+			print(" seconds.")
+else:
+	arrays = scanInput()
+	print "Arrays detected in file: " + str(len(arrays))
+	for x in range(len(arrays)):
+		highestSum = str(linearTime(arrays[x]))
+		outfile.write("Array being processed: " + str(arrays[x]) + "\n")
+		outfile.write("Final highest sum: " + highestSum + "\n\n")
+		print("\nFinal highest sum: " + highestSum)
+		if __name__ == '__main__':
+			import timeit
+			print("The timing was: ")
+			print(timeit.timeit("linearTime(arrays[x])", setup="from __main__ import linearTime, arrays, x", number=1))
+			print(" seconds.")
