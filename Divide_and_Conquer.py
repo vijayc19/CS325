@@ -1,6 +1,6 @@
 import sys
 from functools import wraps
-
+sys.setrecursionlimit(4000)
 #Scans 'MSS_Problems.txt' and returns an array of arrays contained in the file
 def scanInput():
     infile = open('MSS_Problems.txt', 'r')	
