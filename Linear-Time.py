@@ -73,26 +73,26 @@ if int(sys.argv[1]) > 0:
 		highestSum = str(linearTime(theRandArray))
 		outfile.write("Array being processed: " + str(theRandArray) + "\n")
 		outfile.write("Final highest sum: " + highestSum + "\n\n")
-		print("\nFinal highest sum: " + highestSum)
+		#print("\nFinal highest sum: " + highestSum)
 		if __name__ == '__main__':
 			import timeit
-			timeVal = timeit.timeit("linearTime(theRandArray)", setup="from __main__ import linearTime, theRandArray, x", number=1)
-			totalTime += timeVal
-			print("The timing was: ")
-			print(timeVal)
-			print(" seconds.")
-	print "average time is: "
-	print totalTime/10
+			#timeVal = timeit.timeit("linearTime(theRandArray)", setup="from __main__ import linearTime, theRandArray, x", number=1)
+			#totalTime += timeVal
+			#print("The timing was: ")
+			#print(timeVal)
+			#print(" seconds.")
+	#print "average time is: "
+	#print totalTime/10
 else:
 	arrays = scanInput()
-	print "Arrays detected in file: " + str(len(arrays))
+	#print "Arrays detected in file: " + str(len(arrays))
 	for x in range(len(arrays)):
 		highestSum = str(linearTime(arrays[x]))
 		outfile.write("Array being processed: " + str(arrays[x]) + "\n")
 		outfile.write("Final highest sum: " + highestSum + "\n\n")
-		print("\nFinal highest sum: " + highestSum)
+		#print("\nFinal highest sum: " + highestSum)
 		if __name__ == '__main__':
 			import timeit
-			print("The timing was: ")
-			print(timeit.timeit("linearTime(arrays[x])", setup="from __main__ import linearTime, arrays, x", number=1))
-			print(" seconds.")
+			#print("The timing was: ")
+			#print(timeit.timeit("linearTime(arrays[x])", setup="from __main__ import linearTime, arrays, x", number=1))
+			#print(" seconds.")
