@@ -1,0 +1,5 @@
+When calling Linear-time with Python, use, as a parameter, a number <= 0 to use the arrays from MSS_Problems.txt. Use numbers > 0 to create 10 random arrays of the same size as the number entered.
+
+For the other programs, no arguments are required.
+
+To compile all programs, and return their found values to MSS_Results.txt, use the makefile by entering "make makefile".
