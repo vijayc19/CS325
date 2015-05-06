@@ -53,6 +53,6 @@ arrays = scanInput()
 for l in arrays:
     a = tuple(l)
     outfile.write("Array being processed: " + str(a) + "\n")
-    outfile.write("Maximum sum: " + str(smax(a)) + "\n\n")
+   
    
 
